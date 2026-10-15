@@ -14,7 +14,7 @@
   `db:migrate`. — RF: base (RF-004, RF-017, RF-022)
   Hecho cuando: `pnpm db:migrate` crea todo en una BD vacía y un test de Vitest comprueba los `unique` de
   membresía y de invitación pendiente.
-- [ ] T3 Lógica pura y Zod: `lib/invitations.ts`, `lib/lockout.ts`, `lib/team-rules.ts`,
+- [x] T3 Lógica pura y Zod: `lib/invitations.ts`, `lib/lockout.ts`, `lib/team-rules.ts`,
   `lib/permissions.ts`, `lib/schemas/auth.ts`. — RF: RF-004, RF-007, RF-010, RF-017, RF-018, RF-025
   Hecho cuando: Vitest de vencimiento a los 7 días, uso único, bloqueo al 5º fallo y liberación a los
   15 min, último dueño y permisos por rol, todos en verde.

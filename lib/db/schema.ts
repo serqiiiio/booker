@@ -10,6 +10,9 @@ import {
   uniqueIndex,
   uuid,
 } from "drizzle-orm/pg-core";
+import { memberRoles } from "@/lib/roles";
+
+export { memberRoles, type MemberRole } from "@/lib/roles";
 
 // Constitution II.5: every date is stored as timestamptz (UTC).
 const tstz = (name: string) => timestamp(name, { withTimezone: true });
@@ -115,9 +118,6 @@ export const loginLockouts = pgTable(
 
 export const restaurantStatuses = ["active", "suspended"] as const;
 export type RestaurantStatus = (typeof restaurantStatuses)[number];
-
-export const memberRoles = ["owner", "staff"] as const;
-export type MemberRole = (typeof memberRoles)[number];
 
 export const invitationStatuses = ["pending", "accepted", "cancelled"] as const;
 export type InvitationStatus = (typeof invitationStatuses)[number];
