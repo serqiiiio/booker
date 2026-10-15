@@ -42,8 +42,9 @@ lib/jobs/                    funciones Inngest
 ```
 
 ## Comandos
-Requisitos: Node 24+ y pnpm (`corepack enable pnpm`). La primera vez: `pnpm install` y
-`pnpm exec playwright install chromium`.
+Requisitos: Node 24+, pnpm (`corepack enable pnpm`) y Docker. La primera vez: `pnpm install`,
+`pnpm exec playwright install chromium`, `cp .env.example .env.local` (y completar `BETTER_AUTH_SECRET`),
+`pnpm db:up` y `pnpm db:migrate`.
 
 | Qué | Comando |
 |---|---|
@@ -51,14 +52,18 @@ Requisitos: Node 24+ y pnpm (`corepack enable pnpm`). La primera vez: `pnpm inst
 | Build de producción | `pnpm build` |
 | Lint (ESLint, sin `any`) | `pnpm lint` |
 | Typecheck (genera los tipos de rutas + `tsc`) | `pnpm typecheck` |
-| Tests de lógica (Vitest) | `pnpm test` |
+| Tests de lógica (Vitest: proyectos `unit` y `db`; `db` necesita `pnpm db:up`) | `pnpm test` |
+| Solo un proyecto de Vitest | `pnpm test --project unit` / `pnpm test --project db` |
 | Un archivo de Vitest / un test por nombre | `pnpm test lib/utils.test.ts` / `pnpm test -t "merges conflicting"` |
 | Vitest en modo watch | `pnpm test:watch` |
 | Tests de flujo (Playwright, móvil 390×844; levanta `pnpm dev` solo) | `pnpm test:e2e` |
 | Un archivo de Playwright / un test por nombre | `pnpm test:e2e e2e/home.spec.ts` / `pnpm test:e2e -g "home loads"` |
-| Migraciones de la BD | `pnpm db:generate` + `pnpm db:migrate` (se agregan en la T2 de la spec 001) |
+| Levantar Postgres local (Docker; BDs `booker` y `booker_test`) | `pnpm db:up` |
+| Crear una migración tras cambiar `lib/db/schema.ts` | `pnpm db:generate --name <nombre>` |
+| Aplicar migraciones a la BD de `DATABASE_URL` | `pnpm db:migrate` |
 
-Los tests de Vitest van junto al código (`lib/x.test.ts`); los de Playwright, en `e2e/`.
+Los tests de Vitest van junto al código: `lib/x.test.ts` (sin BD) o `lib/x.db.test.ts` (contra `booker_test`,
+que se borra y se migra de cero al empezar la suite). Los de Playwright, en `e2e/`.
 
 ## Memoria del proyecto
 Las decisiones y su porqué están en `MEMORY.md`. Léelo antes de proponer cambios de stack o de producto,

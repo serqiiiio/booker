@@ -9,7 +9,7 @@
   "Comandos" en `AGENTS.md`. — RF: base
   Hecho cuando: `pnpm lint`, `pnpm typecheck`, `pnpm test` (1 test de humo) y `pnpm test:e2e` (la home carga
   en 390×844) pasan en verde.
-- [ ] T2 Base de datos: Drizzle + postgres.js, Postgres de desarrollo y de test, esquema de Better Auth +
+- [x] T2 Base de datos: Drizzle + postgres.js, Postgres de desarrollo y de test, esquema de Better Auth +
   `restaurants`, `memberships`, `invitations`, `login_lockouts`; primera migración; scripts `db:generate` y
   `db:migrate`. — RF: base (RF-004, RF-017, RF-022)
   Hecho cuando: `pnpm db:migrate` crea todo en una BD vacía y un test de Vitest comprueba los `unique` de

@@ -4,7 +4,7 @@
 
 | ID | Nombre | Estado | Depende de | Prioridad |
 |---|---|---|---|---|
-| 001 | [Acceso del staff](001-acceso-staff/spec.md) | Planificado (T1 hecha) | — | P1 |
+| 001 | [Acceso del staff](001-acceso-staff/spec.md) | Planificado (T1–T2 hechas) | — | P1 |
 
 ## Mapa de la Fase 1 (aprobado 2026-10-14)
 Orden de implementación; las specs se escriben una a la vez.
