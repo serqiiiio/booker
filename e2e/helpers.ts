@@ -1,6 +1,7 @@
 import { randomUUID } from "node:crypto";
 import type { Page } from "@playwright/test";
 import { createUserWithPassword } from "@/lib/auth/users";
+import { createRestaurantWithOwnerInvitation } from "@/lib/invitations-store";
 import { db } from "@/lib/db";
 import { memberships, restaurants, type RestaurantStatus } from "@/lib/db/schema";
 import type { MemberRole } from "@/lib/roles";
@@ -80,4 +81,17 @@ export async function fillLogin(
 // announcer on every page).
 export function formAlert(page: Page) {
   return page.locator("form").getByRole("alert");
+}
+
+// A restaurant just created by the founder, with a pending owner invitation.
+// Returns the invitation path (/invitacion/<token>) as the email would link it.
+export async function createOwnerInvitation(ownerEmail: string, name = "La Casona") {
+  const founder = await createFounder();
+  const created = await createRestaurantWithOwnerInvitation({
+    name,
+    ownerEmail,
+    createdBy: founder.id,
+    now: new Date(),
+  });
+  return { ...created, founder, path: `/invitacion/${created.token}` };
 }

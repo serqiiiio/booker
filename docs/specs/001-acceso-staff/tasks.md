@@ -41,7 +41,7 @@
   staff ve "Cuenta suspendida"; reactivar → vuelve; un dueño no entra a `/admin`) en verde.
 
 ## HU-2 (P1): Aceptar una invitación
-- [ ] T7 `/invitacion/[token]`: usuario nuevo pone su nombre y crea su contraseña; usuario existente se une
+- [x] T7 `/invitacion/[token]`: usuario nuevo pone su nombre y crea su contraseña; usuario existente se une
   sin contraseña nueva; link vencido, usado o cancelado → mensaje; restaurante suspendido → pantalla de
   suspendido. — RF: RF-005, RF-006, RF-007, RF-024
   Hecho cuando: Playwright `invitation.spec.ts` cubre los 3 criterios de HU-2 y el caso del suspendido.

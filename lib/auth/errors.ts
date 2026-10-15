@@ -10,6 +10,12 @@ export const authMessages = {
   unexpected: "Algo salió mal. Intenta de nuevo.",
 } as const;
 
+export const invitationMessages = {
+  invalid: "Esta invitación ya no es válida. Pide una nueva a quien te invitó.",
+  hasAccount: "Ya tienes una cuenta con este email. Recarga la página para unirte con tu contraseña.",
+  wrongUser: "Esta invitación es para otro email.",
+} as const;
+
 export const accessMessages = {
   notMember: "Ya no tienes acceso a este restaurante.",
   forbidden: "Solo el dueño puede hacer esto.",
