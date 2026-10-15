@@ -61,7 +61,7 @@
   queda cerrada) en verde.
 
 ## Cierre
-- [ ] T10 Test de punta a punta (fundador crea → dueño acepta → invita mesero → mesero entra → dueño lo
+- [x] T10 Test de punta a punta (fundador crea → dueño acepta → invita mesero → mesero entra → dueño lo
   quita) y verificación final: suite completa, lint, typecheck, cobertura RF por RF, revisión de la
   constitución y README en "Implementado".
   Hecho cuando: todo en verde y la tabla "Cobertura del spec" del plan sin huecos.
