@@ -28,7 +28,7 @@
   sesión sigue al recargar, el logout la cierra y sin red se conserva lo escrito) en verde.
 
 ## HU-6 / HU-7: Acceso por local (va antes de las P1 porque construye la protección multi-tenant, RF-022)
-- [ ] T5 Guard multi-tenant: `requireSession`, `requireMember`, `requirePlatformAdmin`; `/panel` con
+- [x] T5 Guard multi-tenant: `requireSession`, `requireMember`, `requirePlatformAdmin`; `/panel` con
   selector de local, `/panel/[restaurantId]` como placeholder y pantallas de "sin acceso" y "suspendido".
   — RF: RF-015, RF-018, RF-021, RF-022, RF-024
   Hecho cuando: Vitest `guard.test.ts` (no miembro, staff en acción de dueño, miembro quitado y suspendido)

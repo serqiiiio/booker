@@ -9,3 +9,10 @@ export const authMessages = {
   offline: "Sin conexión. Revisa tu internet e intenta de nuevo.",
   unexpected: "Algo salió mal. Intenta de nuevo.",
 } as const;
+
+export const accessMessages = {
+  notMember: "Ya no tienes acceso a este restaurante.",
+  forbidden: "Solo el dueño puede hacer esto.",
+  suspended: "Cuenta suspendida, contacta a Booker.",
+  noRestaurants: "No perteneces a ningún restaurante.",
+} as const;
