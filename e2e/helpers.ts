@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import type { Page } from "@playwright/test";
+import type { Browser, Page } from "@playwright/test";
 import { createUserWithPassword } from "@/lib/auth/users";
 import { createRestaurantWithOwnerInvitation } from "@/lib/invitations-store";
 import { db } from "@/lib/db";
@@ -94,4 +94,21 @@ export async function createOwnerInvitation(ownerEmail: string, name = "La Cason
     now: new Date(),
   });
   return { ...created, founder, path: `/invitacion/${created.token}` };
+}
+
+export async function addMember(restaurantId: string, userId: string, role: MemberRole) {
+  await db.insert(memberships).values({ restaurantId, userId, role });
+}
+
+// A second, independent phone (its own cookies), to act as another person.
+export async function otherPhone(browser: Browser, baseURL: string | undefined) {
+  const context = await browser.newContext({
+    baseURL,
+    viewport: { width: 390, height: 844 },
+    isMobile: true,
+    hasTouch: true,
+    locale: "es-BO",
+    timezoneId: "America/La_Paz",
+  });
+  return context.newPage();
 }

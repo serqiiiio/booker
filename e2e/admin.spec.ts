@@ -1,11 +1,12 @@
 import { randomUUID } from "node:crypto";
-import { expect, test, type Browser, type Page } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 import { accessMessages } from "@/lib/auth/errors";
 import { invitationLinkIn, waitForEmail } from "./emails";
 import {
   createFounder,
   createRestaurantWithMember,
   createStaffUser,
+  otherPhone,
   signInAs,
   uniqueEmail,
 } from "./helpers";
@@ -25,18 +26,6 @@ async function createRestaurantInUi(page: Page, name: string, ownerEmail: string
   await page.getByLabel("Nombre del restaurante").fill(name);
   await page.getByLabel("Email del dueño").fill(ownerEmail);
   await page.getByRole("button", { name: "Crear restaurante e invitar" }).click();
-}
-
-// A second, independent phone (its own cookies), to act as another person.
-async function otherPhone(browser: Browser, baseURL: string | undefined) {
-  const context = await browser.newContext({
-    baseURL,
-    viewport: { width: 390, height: 844 },
-    isMobile: true,
-    hasTouch: true,
-    locale: "es-BO",
-  });
-  return context.newPage();
 }
 
 test.describe("HU-1: dar de alta un restaurante", () => {

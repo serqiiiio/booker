@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { z } from "zod";
-import { restaurantName, sendInvitationEmail } from "@/lib/admin";
+import { restaurantName, sendInvitationEmail } from "@/lib/invitations-mail";
 import { AccessError, requirePlatformAdmin } from "@/lib/auth/guard";
 import {
   createRestaurantWithOwnerInvitation,

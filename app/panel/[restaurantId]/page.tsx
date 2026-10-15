@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { listUserRestaurants } from "@/lib/auth/access";
 import { getMemberAccess } from "@/lib/auth/guard";
+import { can } from "@/lib/permissions";
 import { AccessDenied } from "../access-denied";
 import { SignOutButton } from "../sign-out-button";
 
@@ -32,6 +33,11 @@ export default async function RestaurantPanelPage({
       <p className="text-muted-foreground">El panel del día llega pronto.</p>
 
       <div className="flex flex-col gap-3">
+        {can(access.role, "team.manage") && (
+          <Button asChild variant="outline" size="lg" className="h-11">
+            <Link href={`/panel/${access.restaurant.id}/equipo`}>Equipo</Link>
+          </Button>
+        )}
         {hasOtherRestaurants && (
           <Button asChild variant="outline" size="lg" className="h-11">
             <Link href="/panel">Cambiar de local</Link>

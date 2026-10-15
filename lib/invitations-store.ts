@@ -30,6 +30,17 @@ async function insertInvitation(
   return { invitation, token };
 }
 
+// RF-013: an owner invites someone to their restaurant.
+export async function createInvitation(input: {
+  restaurantId: string;
+  email: string;
+  role: MemberRole;
+  invitedBy: string;
+  now: Date;
+}) {
+  return db.transaction((tx) => insertInvitation(tx, input));
+}
+
 // RF-001, RF-002: the founder creates a restaurant and invites its owner.
 export async function createRestaurantWithOwnerInvitation(input: {
   name: string;

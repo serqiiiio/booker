@@ -47,7 +47,7 @@
   Hecho cuando: Playwright `invitation.spec.ts` cubre los 3 criterios de HU-2 y el caso del suspendido.
 
 ## HU-4 (P1): Invitar y quitar staff
-- [ ] T8 `/panel/[restaurantId]/equipo`: invitar (dueño/staff), listar con estado, cambiar el rol, quitar,
+- [x] T8 `/panel/[restaurantId]/equipo`: invitar (dueño/staff), listar con estado, cambiar el rol, quitar,
   cancelar, reenviar, email ya miembro y regla de último dueño en transacción.
   — RF: RF-013 a RF-017, RF-025, RF-028
   Hecho cuando: Playwright `team.spec.ts` (invitar → aceptar → quitar con la sesión abierta → "Ya no tienes

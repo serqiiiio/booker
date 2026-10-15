@@ -22,3 +22,11 @@ export const accessMessages = {
   suspended: "Cuenta suspendida, contacta a Booker.",
   noRestaurants: "No perteneces a ningún restaurante.",
 } as const;
+
+export const teamMessages = {
+  lastOwner: "El restaurante necesita al menos un dueño.",
+  alreadyMember: "Esta persona ya es parte de tu equipo.",
+  alreadyInvited: "Ya hay una invitación pendiente para este email. Reenvíala desde la lista.",
+  notFound: "Esta persona ya no está en el equipo.",
+  invitationGone: "Esta invitación ya no está pendiente.",
+} as const;
