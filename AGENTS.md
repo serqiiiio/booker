@@ -56,11 +56,12 @@ Requisitos: Node 24+, pnpm (`corepack enable pnpm`) y Docker. La primera vez: `p
 | Solo un proyecto de Vitest | `pnpm test --project unit` / `pnpm test --project db` |
 | Un archivo de Vitest / un test por nombre | `pnpm test lib/utils.test.ts` / `pnpm test -t "merges conflicting"` |
 | Vitest en modo watch | `pnpm test:watch` |
-| Tests de flujo (Playwright, móvil 390×844; levanta `pnpm dev` solo) | `pnpm test:e2e` |
+| Tests de flujo (Playwright, móvil 390×844; levanta su propio servidor en :3100 contra `booker_test`) | `pnpm test:e2e` |
 | Un archivo de Playwright / un test por nombre | `pnpm test:e2e e2e/home.spec.ts` / `pnpm test:e2e -g "home loads"` |
 | Levantar Postgres local (Docker; BDs `booker` y `booker_test`) | `pnpm db:up` |
 | Crear una migración tras cambiar `lib/db/schema.ts` | `pnpm db:generate --name <nombre>` |
 | Aplicar migraciones a la BD de `DATABASE_URL` | `pnpm db:migrate` |
+| Crear la cuenta del fundador (contraseña de `ADMIN_PASSWORD` o generada) | `pnpm admin:create <email> "<nombre>"` |
 
 Los tests de Vitest van junto al código: `lib/x.test.ts` (sin BD) o `lib/x.db.test.ts` (contra `booker_test`,
 que se borra y se migra de cero al empezar la suite). Los de Playwright, en `e2e/`.

@@ -20,7 +20,7 @@
   15 min, último dueño y permisos por rol, todos en verde.
 
 ## HU-3 (P1): Iniciar y cerrar sesión
-- [ ] T4 Better Auth: email y contraseña, signup público desactivado, sesión de 30 días deslizante, hooks de
+- [x] T4 Better Auth: email y contraseña, signup público desactivado, sesión de 30 días deslizante, hooks de
   bloqueo, `/ingresar`, cerrar sesión, aviso sin conexión y script `pnpm admin:create <email>`.
   — RF: RF-001, RF-008 a RF-012, RF-026
   Hecho cuando: Vitest (signup público rechazado; sesión de 30 días deslizante) y Playwright `login.spec.ts`

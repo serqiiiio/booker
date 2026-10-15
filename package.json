@@ -13,7 +13,8 @@
     "test:e2e": "playwright test",
     "db:up": "docker compose up -d --wait",
     "db:generate": "drizzle-kit generate",
-    "db:migrate": "drizzle-kit migrate"
+    "db:migrate": "drizzle-kit migrate",
+    "admin:create": "tsx --env-file-if-exists=.env.local scripts/create-admin.ts"
   },
   "dependencies": {
     "better-auth": "^1.7.7",
@@ -40,6 +41,7 @@
     "eslint-config-next": "16.4.0",
     "shadcn": "^4.21.4",
     "tailwindcss": "^4",
+    "tsx": "^4.23.15",
     "typescript": "^5",
     "vitest": "^5.0.4"
   },
