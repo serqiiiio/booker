@@ -30,3 +30,10 @@ export const teamMessages = {
   notFound: "Esta persona ya no está en el equipo.",
   invitationGone: "Esta invitación ya no está pendiente.",
 } as const;
+
+export const passwordResetMessages = {
+  requested:
+    "Si el email tiene una cuenta en Booker, te enviamos un link para crear una contraseña nueva. Revisa tu correo: el link vence en 1 hora.",
+  invalidLink: "Este link ya no es válido. Pide uno nuevo.",
+  changed: "Tu contraseña se cambió. Ingresa con la nueva.",
+} as const;

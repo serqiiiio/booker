@@ -55,7 +55,7 @@
   en verde; Vitest de integración: dos dueños que se quitan a la vez dejan al menos un dueño.
 
 ## HU-5 (P2): Recuperar la contraseña
-- [ ] T9 `/recuperar` y `/recuperar/nueva`: mismo mensaje exista o no la cuenta, link de 1 h y de un solo
+- [x] T9 `/recuperar` y `/recuperar/nueva`: mismo mensaje exista o no la cuenta, link de 1 h y de un solo
   uso, y cierre de las otras sesiones. — RF: RF-019, RF-020
   Hecho cuando: Playwright `password-reset.spec.ts` (link vencido rechazado; tras el cambio, la otra sesión
   queda cerrada) en verde.

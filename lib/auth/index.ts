@@ -10,7 +10,10 @@ import {
 import { readLockout, recordFailedSignIn, recordSuccessfulSignIn } from "@/lib/auth/lockout-store";
 import { db } from "@/lib/db";
 import * as schema from "@/lib/db/schema";
+import { sendEmail } from "@/lib/email";
+import { passwordResetEmail } from "@/lib/emails/password-reset";
 import { isLocked } from "@/lib/lockout";
+import { passwordResetLink } from "@/lib/url";
 
 const DAY_S = 24 * 60 * 60;
 
@@ -29,6 +32,22 @@ export const auth = betterAuth({
     disableSignUp: true,
     minPasswordLength: 8,
     maxPasswordLength: 128,
+    // RF-019: one-use link, valid for 1 hour, to our own page.
+    resetPasswordTokenExpiresIn: 60 * 60,
+    sendResetPassword: async ({ user, token }) => {
+      // A failed email must not answer differently for existing accounts.
+      try {
+        await sendEmail({ to: user.email, ...passwordResetEmail({ link: passwordResetLink(token) }) });
+      } catch (error) {
+        console.error("Password reset email failed", error);
+      }
+    },
+    // RF-020: changing the password closes every open session.
+    revokeSessionsOnPasswordReset: true,
+  },
+  // Reset tokens are stored as hashes, like invitation tokens.
+  verification: {
+    storeIdentifier: "hashed",
   },
   // RF-011: the session stays open 30 days since last use.
   session: {

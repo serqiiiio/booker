@@ -4,6 +4,10 @@ export function appUrl(path = ""): string {
   return `${base}${path}`;
 }
 
+export function passwordResetLink(token: string): string {
+  return appUrl(`/recuperar/nueva?token=${encodeURIComponent(token)}`);
+}
+
 export function invitationLink(token: string): string {
   return appUrl(`/invitacion/${token}`);
 }
