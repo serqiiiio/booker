@@ -35,7 +35,7 @@
   y Playwright (URL de otro restaurante → sin acceso; dos locales → selector) en verde.
 
 ## HU-1 (P1): Dar de alta un restaurante
-- [ ] T6 `lib/email.ts` (transportes `resend` y `file`) y `/admin`: crear restaurante + invitación al dueño,
+- [x] T6 `lib/email.ts` (transportes `resend` y `file`) y `/admin`: crear restaurante + invitación al dueño,
   link copiable al crear o reenviar, suspender y reactivar. — RF: RF-001, RF-002, RF-003, RF-023, RF-027
   Hecho cuando: Playwright `admin.spec.ts` (crear → email en `.emails/` → link copiable; suspender → el
   staff ve "Cuenta suspendida"; reactivar → vuelve; un dueño no entra a `/admin`) en verde.

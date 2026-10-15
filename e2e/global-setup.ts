@@ -1,5 +1,6 @@
 import { resetTestDatabase } from "../test/reset-test-db";
+import { clearEmails } from "./emails";
 
 export default async function globalSetup() {
-  await resetTestDatabase();
+  await Promise.all([resetTestDatabase(), clearEmails()]);
 }

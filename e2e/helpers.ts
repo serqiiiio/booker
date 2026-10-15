@@ -13,6 +13,17 @@ export function uniqueEmail(prefix = "staff") {
   return `${prefix}-${randomUUID().slice(0, 8)}@example.com`;
 }
 
+export async function createFounder(name = "Paulo Fundador") {
+  const email = uniqueEmail("fundador");
+  const user = await createUserWithPassword({
+    name,
+    email,
+    password: PASSWORD,
+    isPlatformAdmin: true,
+  });
+  return { id: user.id, name, email, password: PASSWORD };
+}
+
 export async function createStaffUser(name = "Ana Quispe") {
   const email = uniqueEmail();
   const user = await createUserWithPassword({ name, email, password: PASSWORD });

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { listUserRestaurants } from "@/lib/auth/access";
+import { isPlatformAdmin, listUserRestaurants } from "@/lib/auth/access";
 import { accessMessages } from "@/lib/auth/errors";
 import { requireSession } from "@/lib/auth/guard";
+import { Button } from "@/components/ui/button";
 import { SignOutButton } from "./sign-out-button";
 
 export const metadata: Metadata = { title: "Panel · Booker" };
@@ -14,8 +15,10 @@ const roleLabel = { owner: "Dueño", staff: "Staff" } as const;
 export default async function PanelPage() {
   const session = await requireSession();
   const restaurants = await listUserRestaurants(session.user.id);
+  const isAdmin = await isPlatformAdmin(session.user.id);
 
-  if (restaurants.length === 1) redirect(`/panel/${restaurants[0].id}`);
+  // The founder may belong to no restaurant, or to one, and still needs /admin.
+  if (restaurants.length === 1 && !isAdmin) redirect(`/panel/${restaurants[0].id}`);
 
   return (
     <main className="mx-auto flex min-h-dvh max-w-md flex-col gap-6 px-4 py-8">
@@ -46,6 +49,11 @@ export default async function PanelPage() {
         </nav>
       )}
 
+      {isAdmin && (
+        <Button asChild variant="outline" size="lg" className="h-11">
+          <Link href="/admin">Administración de Booker</Link>
+        </Button>
+      )}
       <SignOutButton />
     </main>
   );

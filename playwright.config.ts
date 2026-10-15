@@ -1,5 +1,6 @@
 import { existsSync } from "node:fs";
 import { defineConfig, devices } from "@playwright/test";
+import { E2E_EMAIL_DIR } from "./e2e/emails";
 
 if (existsSync(".env.local")) process.loadEnvFile(".env.local");
 
@@ -46,6 +47,8 @@ export default defineConfig({
     env: {
       DATABASE_URL: testDatabaseUrl,
       BETTER_AUTH_URL: baseURL,
+      EMAIL_TRANSPORT: "file",
+      EMAIL_DIR: E2E_EMAIL_DIR,
     },
   },
 });
