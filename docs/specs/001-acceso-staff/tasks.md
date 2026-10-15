@@ -4,7 +4,7 @@
 **Estado**: Aprobado
 
 ## Base
-- [ ] T1 Inicializar el proyecto: Next.js (App Router) + TS strict + Tailwind + shadcn/ui + ESLint (sin `any`)
+- [x] T1 Inicializar el proyecto: Next.js (App Router) + TS strict + Tailwind + shadcn/ui + ESLint (sin `any`)
   + Vitest + Playwright (móvil); scripts `dev`, `build`, `lint`, `typecheck`, `test`, `test:e2e`; completar
   "Comandos" en `AGENTS.md`. — RF: base
   Hecho cuando: `pnpm lint`, `pnpm typecheck`, `pnpm test` (1 test de humo) y `pnpm test:e2e` (la home carga

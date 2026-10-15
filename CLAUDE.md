@@ -8,8 +8,8 @@ The project guidance lives in three files, imported below so other agents can sh
 - `AGENTS.md`: product, stack, structure, commands.
 - `MEMORY.md`: decisions and why they were made. When a new decision is made, add an entry there (not here).
 
-There is no application code yet; the stack is TypeScript/Next.js. `main.py` is PyCharm boilerplate and not part of the project.
-Once the project is initialized, fill in the "Comandos" section of `AGENTS.md` (including how to run a single Vitest/Playwright test).
+The stack is TypeScript/Next.js; commands (including how to run a single Vitest/Playwright test) are in the
+"Comandos" section of `AGENTS.md`. `main.py` is PyCharm boilerplate and not part of the project.
 
 @docs/constitution.md
 @AGENTS.md

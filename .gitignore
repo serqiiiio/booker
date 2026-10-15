@@ -1,5 +1,89 @@
-# IDE
-.idea/
+# ---------------------------------------------------------------------------
+# Secrets — never commit. Copy .env.example to .env.local and fill it in.
+# ---------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+*.pem
+*.key
 
-# OS
+# ---------------------------------------------------------------------------
+# Dependencies
+# ---------------------------------------------------------------------------
+/node_modules
+/.pnp
+.pnp.*
+.pnpm-store/
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# ---------------------------------------------------------------------------
+# Next.js / build output
+# ---------------------------------------------------------------------------
+/.next/
+/out/
+/build
+/dist
+*.tsbuildinfo
+next-env.d.ts
+
+# Vercel
+.vercel
+
+# Sentry (if the CLI writes its auth locally)
+.sentryclirc
+
+# ---------------------------------------------------------------------------
+# Tests
+# ---------------------------------------------------------------------------
+/coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+# Emails written by the "file" transport in dev/tests (spec 001, T6)
+/.emails/
+
+# ---------------------------------------------------------------------------
+# Local database (Docker volumes, dumps)
+# ---------------------------------------------------------------------------
+/.data/
+/pgdata/
+*.dump
+*.sql.gz
+
+# ---------------------------------------------------------------------------
+# Logs
+# ---------------------------------------------------------------------------
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ---------------------------------------------------------------------------
+# Editors and OS
+# ---------------------------------------------------------------------------
+.idea/
+.vscode/*
+!.vscode/extensions.json
+*.swp
 .DS_Store
+Thumbs.db
+
+# ---------------------------------------------------------------------------
+# Claude Code: personal settings and local state (shared agents/commands/skills
+# in .claude/ are committed)
+# ---------------------------------------------------------------------------
+.claude/settings.local.json
+.claude/worktrees/
+
+# ---------------------------------------------------------------------------
+# Not part of the project
+# ---------------------------------------------------------------------------
+# PyCharm boilerplate and an empty skill template
+/main.py
+/SKILL.md

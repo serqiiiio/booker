@@ -42,8 +42,34 @@ lib/jobs/                    funciones Inngest
 ```
 
 ## Comandos
-(Completar al inicializar el proyecto: pnpm dev, pnpm test, pnpm test:e2e, pnpm db:migrate, pnpm lint)
+Requisitos: Node 24+ y pnpm (`corepack enable pnpm`). La primera vez: `pnpm install` y
+`pnpm exec playwright install chromium`.
+
+| Qué | Comando |
+|---|---|
+| Servidor de desarrollo (http://localhost:3000) | `pnpm dev` |
+| Build de producción | `pnpm build` |
+| Lint (ESLint, sin `any`) | `pnpm lint` |
+| Typecheck (genera los tipos de rutas + `tsc`) | `pnpm typecheck` |
+| Tests de lógica (Vitest) | `pnpm test` |
+| Un archivo de Vitest / un test por nombre | `pnpm test lib/utils.test.ts` / `pnpm test -t "merges conflicting"` |
+| Vitest en modo watch | `pnpm test:watch` |
+| Tests de flujo (Playwright, móvil 390×844; levanta `pnpm dev` solo) | `pnpm test:e2e` |
+| Un archivo de Playwright / un test por nombre | `pnpm test:e2e e2e/home.spec.ts` / `pnpm test:e2e -g "home loads"` |
+| Migraciones de la BD | `pnpm db:generate` + `pnpm db:migrate` (se agregan en la T2 de la spec 001) |
+
+Los tests de Vitest van junto al código (`lib/x.test.ts`); los de Playwright, en `e2e/`.
 
 ## Memoria del proyecto
 Las decisiones y su porqué están en `MEMORY.md`. Léelo antes de proponer cambios de stack o de producto,
 y agrega una entrada cuando se tome una decisión nueva.
+
+<!-- BEGIN:nextjs-agent-rules -->
+
+## This is NOT the Next.js you know
+
+This version has breaking changes — APIs, conventions, and file structure may all differ from your training data. Read the relevant guide in `node_modules/next/dist/docs/` (resolved from this file's directory; in monorepos the `next` package may not be visible from the repo root) before writing any code. Heed deprecation notices.
+
+This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
+
+<!-- END:nextjs-agent-rules -->
